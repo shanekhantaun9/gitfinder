@@ -22,9 +22,9 @@ func main() {
 		body, err := io.ReadAll(resp.Body)
 		respString := string(body)
 		if strings.Contains(respString, "repositoryformatversion") {
-			fmt.Printf("%s [\033[32mVulnerable\033[0m]\n", urls)
+			fmt.Printf("[\033[32mVulnerable\033[0m] %s\n", urls)
 		} else {
-			fmt.Printf("%s [\033[31mNot Vulnerable\033[0m]\n", urls)
+			fmt.Printf("[\033[31mNot Vulnerable\033[0m] %s\n", urls)
 		}
 	}
 }
