@@ -39,9 +39,11 @@ func main() {
 		flag.PrintDefaults()
 	}
 
+	// Parse only the concurrency flag to avoid parsing other flags when reading from stdin.
 	flag.Parse()
 
-	if len(os.Args) == 1 {
+	// Check if any filename is provided or if the input is coming from stdin.
+	if len(os.Args) == 1 && !isInputFromPipe() {
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -73,4 +75,10 @@ func main() {
 	}
 
 	wg.Wait()
+}
+
+// isInputFromPipe checks if the input is coming from a pipe (stdin).
+func isInputFromPipe() bool {
+	fi, _ := os.Stdin.Stat()
+	return (fi.Mode() & os.ModeCharDevice) == 0
 }
