@@ -3,14 +3,13 @@ This tool can find .git directory exposed from subdomain lists
 
 ## Usage 
 ```bash
-cat subdomain.lst | gitfinder 
+$ cat livedomains.lst | gitfinder 
+$ cat livedomains.lst | gitfinder -c 50
+$ gitfinder livedomains.txt
 ```
 
 ## Installation
-```bash
-go get github.com/0xsheinn/gitfinder
-```
-or
+
 ```bash
 go install github.com/0xsheinn/gitfinder@latest
 ```
